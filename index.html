@@ -15,21 +15,22 @@
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <style>
-        /* الحل النهائي لمشكلة FOUC (Flash of Unstyled Content) */
-        html:not(.script-enabled) body > * {
-            visibility: hidden !important;
+        /* حل نهائي لمشكلة السكرول الأفقي الناتج عن الصور */
+        * {
+            max-width: 100% !important;
         }
 
-        html.script-enabled body > * {
-            visibility: visible !important;
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
         }
 
         body {
+            overflow-x: hidden; /* منع السكرول الأفقي تماماً */
             font-family: 'Cairo', sans-serif;
             background-color: #f8f9fa;
             color: #333;
-            margin: 0;
-            padding: 0;
         }
 
         :root {
@@ -85,16 +86,23 @@
             box-shadow: none;
         }
 
-        /* Hero */
+        /* Hero - تحسين الصورة الخلفية عشان ما تسببش سكرول أفقي */
         .hero {
             height: 100vh;
             min-height: 600px;
             background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1517836357463-d25dfeac3438?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80') no-repeat center/cover;
-            background-attachment: fixed;
+            background-size: cover; /* تأكيد */
+            background-position: center;
             display: flex;
             align-items: center;
             text-align: center;
             color: var(--accent);
+            overflow: hidden;
+        }
+
+        .hero .container {
+            width: 100%;
+            padding: 0 15px;
         }
 
         .hero h1 {
@@ -123,6 +131,7 @@
         /* Sections */
         section {
             padding: 100px 0;
+            overflow: hidden; /* منع أي overflow */
         }
 
         .section-title {
@@ -154,6 +163,7 @@
         /* Classes Carousel */
         .swiper {
             padding: 20px 0;
+            overflow: hidden;
         }
 
         .class-card {
@@ -332,10 +342,6 @@
             .navbar-brand img { height: 50px; }
         }
     </style>
-    <!-- إضافة class لتفعيل الجافاسكريبت من البداية -->
-    <script>
-        document.documentElement.classList.add('script-enabled');
-    </script>
 </head>
 <body>
 
@@ -652,12 +658,10 @@
     <script>
         AOS.init({ duration: 1200 });
 
-        // Navbar Scroll Effect
         window.addEventListener('scroll', () => {
             document.querySelector('.navbar').classList.toggle('scrolled', window.scrollY > 50);
         });
 
-        // Swiper
         var swiper = new Swiper(".mySwiper", {
             slidesPerView: 1,
             spaceBetween: 30,
@@ -669,7 +673,6 @@
             }
         });
 
-        // Smooth Scroll
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function(e) {
                 e.preventDefault();
