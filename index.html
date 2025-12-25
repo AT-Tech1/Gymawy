@@ -15,16 +15,13 @@
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <style>
-        /* حل جذري لمشكلة الـ Flash of Unstyled Content (FOUC) */
-        html {
-            visibility: hidden;
-            opacity: 0;
+        /* الحل النهائي لمشكلة FOUC (Flash of Unstyled Content) */
+        html:not(.script-enabled) body > * {
+            visibility: hidden !important;
         }
 
-        html.revealed {
-            visibility: visible;
-            opacity: 1;
-            transition: opacity 0.5s ease;
+        html.script-enabled body > * {
+            visibility: visible !important;
         }
 
         body {
@@ -335,6 +332,10 @@
             .navbar-brand img { height: 50px; }
         }
     </style>
+    <!-- إضافة class لتفعيل الجافاسكريبت من البداية -->
+    <script>
+        document.documentElement.classList.add('script-enabled');
+    </script>
 </head>
 <body>
 
@@ -426,7 +427,7 @@
                 <div class="swiper-wrapper">
                     <div class="swiper-slide">
                         <div class="class-card">
-                            <img src="https://www.meridian-fitness.co.uk/wp-content/uploads/2024/09/Benefits-Of-Group-High-Interval-Training-Classes.webp" alt="HIIT كارديو مكثف">
+                            <img src="https://www.meridian-fitness.co.uk/wp-content/uploads/2024/09/Benefits-Of-Group-High-Intensity-Interval-Training-Classes.webp" alt="HIIT كارديو مكثف">
                             <div class="p-4">
                                 <h4>HIIT & كارديو مكثف</h4>
                                 <p>حرق سعرات حرارية عالي، تحسين التحمل واللياقة القلبية في 45 دقيقة</p>
@@ -649,10 +650,6 @@
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <script>
-        // حل نهائي لمشكلة الـ flash عند فتح الصفحة
-        document.documentElement.classList.add('revealed');
-
-        // تهيئة AOS بعد ظهور الصفحة
         AOS.init({ duration: 1200 });
 
         // Navbar Scroll Effect
