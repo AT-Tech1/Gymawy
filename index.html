@@ -15,19 +15,24 @@
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <style>
-        /* إخفاء الصفحة لحد ما يتم التحميل الكامل عشان ما يحصلش flash */
-        body {
+        /* حل جذري لمشكلة الـ Flash of Unstyled Content (FOUC) */
+        html {
             visibility: hidden;
             opacity: 0;
-            transition: opacity 0.4s ease;
+        }
+
+        html.revealed {
+            visibility: visible;
+            opacity: 1;
+            transition: opacity 0.5s ease;
+        }
+
+        body {
             font-family: 'Cairo', sans-serif;
             background-color: #f8f9fa;
             color: #333;
-        }
-
-        body.loaded {
-            visibility: visible;
-            opacity: 1;
+            margin: 0;
+            padding: 0;
         }
 
         :root {
@@ -421,7 +426,7 @@
                 <div class="swiper-wrapper">
                     <div class="swiper-slide">
                         <div class="class-card">
-                            <img src="https://www.meridian-fitness.co.uk/wp-content/uploads/2024/09/Benefits-Of-Group-High-Intensity-Interval-Training-Classes.webp" alt="HIIT كارديو مكثف">
+                            <img src="https://www.meridian-fitness.co.uk/wp-content/uploads/2024/09/Benefits-Of-Group-High-Interval-Training-Classes.webp" alt="HIIT كارديو مكثف">
                             <div class="p-4">
                                 <h4>HIIT & كارديو مكثف</h4>
                                 <p>حرق سعرات حرارية عالي، تحسين التحمل واللياقة القلبية في 45 دقيقة</p>
@@ -644,11 +649,11 @@
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <script>
-        // إظهار الصفحة بعد التحميل الكامل
-        window.addEventListener('load', function() {
-            document.body.classList.add('loaded');
-            AOS.init({ duration: 1200 });
-        });
+        // حل نهائي لمشكلة الـ flash عند فتح الصفحة
+        document.documentElement.classList.add('revealed');
+
+        // تهيئة AOS بعد ظهور الصفحة
+        AOS.init({ duration: 1200 });
 
         // Navbar Scroll Effect
         window.addEventListener('scroll', () => {
