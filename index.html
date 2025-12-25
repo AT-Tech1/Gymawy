@@ -64,6 +64,7 @@
         /* Hero */
         .hero {
             height: 100vh;
+            min-height: 600px;
             background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1517836357463-d25dfeac3438?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80') no-repeat center/cover;
             display: flex;
             align-items: center;
@@ -198,10 +199,10 @@
             transform: scale(1.15);
         }
 
-        /* Footer */
-      footer {
+        /* Footer - تحسين التباين والوضوح على الموبايل */
+        footer {
             background: linear-gradient(to bottom, #111, var(--secondary));
-            color: var(--accent);
+            color: #e0e0e0 !important;
             padding: 120px 0 40px;
             position: relative;
             overflow: hidden;
@@ -221,6 +222,7 @@
         footer h5 {
             font-weight: 700;
             margin-bottom: 25px;
+            color: var(--accent);
             position: relative;
             display: inline-block;
         }
@@ -235,8 +237,12 @@
             left: 0;
         }
 
+        footer p, footer a {
+            color: #cccccc !important;
+        }
+
         .footer-links a {
-            color: #ccc;
+            color: #cccccc !important;
             text-decoration: none;
             display: block;
             margin-bottom: 12px;
@@ -244,34 +250,119 @@
         }
 
         .footer-links a:hover {
-            color: var(--primary);
+            color: var(--primary) !important;
             padding-right: 10px;
         }
 
         .social-icons a {
             font-size: 2rem;
             margin: 0 20px;
-            color: var(--accent);
-            transition: color 0.3s, transform 0.3s;
+            color: #e0e0e0 !important;
+            transition: all 0.3s;
         }
 
         .social-icons a:hover {
-            color: var(--primary);
+            color: var(--primary) !important;
             transform: translateY(-8px);
         }
 
-        @media (max-width: 768px) {
+        .footer-bottom p {
+            color: #aaaaaa !important;
+        }
+
+        /* تحسينات شاملة للموبايل */
+        @media (max-width: 992px) {
             .hero h1 {
-                font-size: 3.5rem;
+                font-size: 4rem;
             }
             .hero p {
-                font-size: 1.5rem;
+                font-size: 1.7rem;
+            }
+            .btn-primary {
+                padding: 16px 40px;
+                font-size: 1.3rem;
+            }
+            section {
+                padding: 100px 0;
+            }
+            .section-title {
+                font-size: 3rem;
+            }
+            .navbar-nav {
+                text-align: center;
+                padding: 20px 0;
+            }
+            .nav-link {
+                margin: 12px 0;
+                font-size: 1.1rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero {
+                height: 80vh;
+            }
+            .hero h1 {
+                font-size: 3.2rem;
+            }
+            .hero p {
+                font-size: 1.4rem;
+            }
+            .btn-primary {
+                padding: 14px 35px;
+                font-size: 1.2rem;
             }
             section {
                 padding: 80px 0;
             }
             .section-title {
+                font-size: 2.6rem;
+            }
+            .feature-icon {
+                font-size: 2.6rem;
+            }
+            .class-card img {
+                height: 280px;
+            }
+            .trainer-card img {
+                width: 220px;
+                height: 220px;
+            }
+            .gallery-img {
+                height: 300px;
+            }
+            footer {
+                padding: 80px 0 30px;
+                text-align: center;
+            }
+            footer .col-lg-4 {
+                margin-bottom: 50px;
+            }
+            .social-icons a {
+                margin: 0 12px;
+                font-size: 1.8rem;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .hero h1 {
                 font-size: 2.8rem;
+            }
+            .hero p {
+                font-size: 1.2rem;
+            }
+            .btn-primary {
+                padding: 12px 30px;
+                font-size: 1.1rem;
+            }
+            .section-title {
+                font-size: 2.2rem;
+            }
+            .feature-icon {
+                font-size: 2.3rem;
+            }
+            .features .col-md-3 {
+                margin-bottom: 40px;
             }
         }
     </style>
@@ -281,7 +372,6 @@
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg fixed-top">
         <div class="container">
-            <!-- Logo Placeholder - يمكنك استبداله بصورة لوجو حقيقية -->
             <a class="navbar-brand" href="#">
                 <img src="g.jpg" alt="جيماوى لوغو احترافي">
             </a>
@@ -317,22 +407,22 @@
         <div class="container">
             <h2 class="section-title text-center" data-aos="fade-up">مميزات جيماوى الفريدة</h2>
             <div class="row text-center">
-                <div class="col-md-3" data-aos="fade-up" data-aos-delay="100">
+                <div class="col-md-3 col-6" data-aos="fade-up" data-aos-delay="100">
                     <i class="fas fa-dumbbell feature-icon"></i>
                     <h4>أحدث المعدات</h4>
                     <p>معدات عالمية من أفضل الماركات مثل Technogym وLife Fitness</p>
                 </div>
-                <div class="col-md-3" data-aos="fade-up" data-aos-delay="200">
+                <div class="col-md-3 col-6" data-aos="fade-up" data-aos-delay="200">
                     <i class="fas fa-users feature-icon"></i>
                     <h4>دروس جماعية متنوعة</h4>
                     <p>أكثر من 50 درس أسبوعياً: زومبا، سبينينج، بوكسينج، HIIT</p>
                 </div>
-                <div class="col-md-3" data-aos="fade-up" data-aos-delay="300">
+                <div class="col-md-3 col-6" data-aos="fade-up" data-aos-delay="300">
                     <i class="fas fa-spa feature-icon"></i>
                     <h4>مناطق استرخاء</h4>
                     <p>ساونا، حمام بخار، جاكوزي، ومنطقة تدليك</p>
                 </div>
-                <div class="col-md-3" data-aos="fade-up" data-aos-delay="400">
+                <div class="col-md-3 col-6" data-aos="fade-up" data-aos-delay="400">
                     <i class="fas fa-clock feature-icon"></i>
                     <h4>مفتوح 24/7</h4>
                     <p>تمرن في أي وقت يناسب جدولك</p>
@@ -488,7 +578,7 @@
     </section>
 
     <!-- Gallery -->
-   <section id="gallery">
+    <section id="gallery">
         <div class="container">
             <h2 class="section-title text-center" data-aos="fade-up">معرض جيماوى</h2>
             <div class="row g-4">
@@ -505,7 +595,6 @@
                     <img src="https://thumbs.dreamstime.com/b/modern-gym-interior-cardio-strength-training-equipment-black-orange-color-palette-linear-lighting-large-windows-reveal-385712045.jpg" class="gallery-img img-fluid shadow" alt="التصميم الداخلي">
                 </div>
                 <div class="col-md-4" data-aos="zoom-in" data-aos-delay="200">
-                    <!-- صورة جديدة لتمارين جماعية عالية الطاقة -->
                     <img src="https://images.stockcake.com/public/e/6/b/e6b2e02e-9f14-4381-aee7-2bc6b0e662a3_large/fitness-class-energy-stockcake.jpg" class="gallery-img img-fluid shadow" alt="تمارين جماعية مكثفة وممتعة">
                 </div>
                 <div class="col-md-4" data-aos="zoom-in" data-aos-delay="400">
@@ -515,14 +604,42 @@
         </div>
     </section>
 
+    <!-- Contact -->
+    <section id="contact" class="bg-light">
+        <div class="container">
+            <h2 class="section-title text-center" data-aos="fade-up">تواصل معنا</h2>
+            <div class="row">
+                <div class="col-lg-8 mx-auto">
+                    <form data-aos="fade-up">
+                        <div class="row">
+                            <div class="col-md-6 mb-4">
+                                <input type="text" class="form-control form-control-lg" placeholder="اسمك الكامل">
+                            </div>
+                            <div class="col-md-6 mb-4">
+                                <input type="tel" class="form-control form-control-lg" placeholder="رقم الهاتف">
+                            </div>
+                        </div>
+                        <div class="mb-4">
+                            <input type="email" class="form-control form-control-lg" placeholder="بريدك الإلكتروني">
+                        </div>
+                        <div class="mb-4">
+                            <textarea class="form-control form-control-lg" rows="6" placeholder="رسالتك أو استفسارك"></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-lg w-100">إرسال الرسالة</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Footer -->
-   <footer>
+    <footer>
         <div class="container position-relative">
             <div class="row">
                 <div class="col-lg-4 mb-5">
                     <h5>جيماوى</h5>
-                    <p class="text-muted">الجيم الاحترافي الأول في المنطقة<br>ملتزمون بصحتك ولياقتك البدنية بأعلى المعايير العالمية.</p>
-                    <p class="text-muted small">اكتشف قوتك الحقيقية مع فريق محترف ومعدات فاخرة.</p>
+                    <p>الجيم الاحترافي الأول في المنطقة<br>ملتزمون بصحتك ولياقتك البدنية بأعلى المعايير العالمية.</p>
+                    <p class="small">اكتشف قوتك الحقيقية مع فريق محترف ومعدات فاخرة.</p>
                 </div>
                 <div class="col-lg-4 mb-5">
                     <h5>روابط سريعة</h5>
@@ -538,10 +655,10 @@
                 </div>
                 <div class="col-lg-4 mb-5">
                     <h5>معلومات التواصل</h5>
-                    <p class="text-muted"><i class="fas fa-map-marker-alt me-2"></i> القاهرة الجديدة - التجمع الخامس</p>
-                    <p class="text-muted"><i class="fas fa-phone me-2"></i> 01000000000 - 01111111111</p>
-                    <p class="text-muted"><i class="fas fa-envelope me-2"></i> info@gymawi.com</p>
-                    <p class="text-muted"><i class="fas fa-clock me-2"></i> مفتوح 24 ساعة / 7 أيام في الأسبوع</p>
+                    <p><i class="fas fa-map-marker-alt me-2"></i> القاهرة الجديدة - التجمع الخامس</p>
+                    <p><i class="fas fa-phone me-2"></i> 01000000000 - 01111111111</p>
+                    <p><i class="fas fa-envelope me-2"></i> info@gymawi.com</p>
+                    <p><i class="fas fa-clock me-2"></i> مفتوح 24 ساعة / 7 أيام في الأسبوع</p>
                 </div>
             </div>
             <div class="footer-bottom text-center">
@@ -553,7 +670,7 @@
                     <a href="#"><i class="fab fa-youtube"></i></a>
                     <a href="#"><i class="fab fa-tiktok"></i></a>
                 </div>
-                <p class="text-muted small">&copy; 2025 جيماوى - جميع الحقوق محفوظة | تصميم وتطوير باحترافية عالمية</p>
+                <p class="small">&copy; 2025 جيماوى - جميع الحقوق محفوظة | تصميم وتطوير باحترافية عالمية</p>
             </div>
         </div>
     </footer>
