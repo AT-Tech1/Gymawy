@@ -1,0 +1,595 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>جيماوى - جيم احترافي عالمي المستوى</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&display=swap" rel="stylesheet">
+    <!-- Bootstrap 5 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- AOS Animation -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <!-- Swiper CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Cairo', sans-serif;
+            background-color: #f8f9fa;
+            color: #333;
+        }
+
+        :root {
+            --primary: #e50914; /* Red for energy */
+            --secondary: #000000;
+            --accent: #ffffff;
+            --text: #333333;
+            --hover: #b20710;
+        }
+
+        /* Header */
+        .navbar {
+            background-color: var(--secondary);
+            transition: all 0.3s ease;
+            padding: 15px 0;
+        }
+
+        .navbar.scrolled {
+            background-color: rgba(0,0,0,0.95);
+            padding: 10px 0;
+        }
+
+        .navbar-brand img {
+            height: 70px;
+            transition: transform 0.3s;
+        }
+
+        .navbar-brand:hover img {
+            transform: scale(1.1);
+        }
+
+        .nav-link {
+            color: var(--accent) !important;
+            font-weight: 600;
+            margin: 0 10px;
+            transition: color 0.3s;
+        }
+
+        .nav-link:hover {
+            color: var(--primary) !important;
+        }
+
+        /* Hero */
+        .hero {
+            height: 100vh;
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1517836357463-d25dfeac3438?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80') no-repeat center/cover;
+            display: flex;
+            align-items: center;
+            text-align: center;
+            color: var(--accent);
+        }
+
+        .hero h1 {
+            font-size: 5rem;
+            font-weight: 900;
+        }
+
+        .hero p {
+            font-size: 2rem;
+            margin: 30px 0;
+        }
+
+        .btn-primary {
+            background: var(--primary);
+            border: none;
+            padding: 18px 50px;
+            font-size: 1.4rem;
+            transition: all 0.3s;
+        }
+
+        .btn-primary:hover {
+            background: var(--hover);
+            transform: translateY(-5px);
+        }
+
+        /* Sections */
+        section {
+            padding: 120px 0;
+        }
+
+        .section-title {
+            font-size: 3.5rem;
+            font-weight: 700;
+            color: var(--primary);
+            position: relative;
+            margin-bottom: 60px;
+        }
+
+        .section-title::after {
+            content: '';
+            width: 120px;
+            height: 6px;
+            background: var(--secondary);
+            position: absolute;
+            bottom: -20px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        /* Features */
+        .feature-icon {
+            font-size: 3rem;
+            color: var(--primary);
+            margin-bottom: 20px;
+        }
+
+        /* Classes Carousel */
+        .swiper {
+            padding: 30px 0;
+        }
+
+        .class-card {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+            transition: transform 0.4s;
+        }
+
+        .class-card:hover {
+            transform: translateY(-20px);
+        }
+
+        .class-card img {
+            height: 350px;
+            object-fit: cover;
+        }
+
+        /* Trainers */
+        .trainer-card {
+            text-align: center;
+            background: white;
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .trainer-card img {
+            width: 280px;
+            height: 280px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin: 0 auto 30px;
+            border: 8px solid var(--primary);
+        }
+
+        /* Pricing */
+        .pricing-card {
+            background: white;
+            border-radius: 20px;
+            padding: 50px;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.1);
+            transition: all 0.4s;
+            border: 3px solid transparent;
+        }
+
+        .pricing-card:hover {
+            border-color: var(--primary);
+            transform: scale(1.08);
+        }
+
+        .pricing-card .price {
+            font-size: 4rem;
+            font-weight: 900;
+            color: var(--primary);
+        }
+
+        /* Gallery */
+        .gallery-img {
+            height: 400px;
+            object-fit: cover;
+            border-radius: 20px;
+            transition: transform 0.5s;
+        }
+
+        .gallery-img:hover {
+            transform: scale(1.15);
+        }
+
+        /* Footer */
+      footer {
+            background: linear-gradient(to bottom, #111, var(--secondary));
+            color: var(--accent);
+            padding: 120px 0 40px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(229, 9, 20, 0.05);
+            pointer-events: none;
+        }
+
+        footer h5 {
+            font-weight: 700;
+            margin-bottom: 25px;
+            position: relative;
+            display: inline-block;
+        }
+
+        footer h5::after {
+            content: '';
+            width: 50px;
+            height: 3px;
+            background: var(--primary);
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+        }
+
+        .footer-links a {
+            color: #ccc;
+            text-decoration: none;
+            display: block;
+            margin-bottom: 12px;
+            transition: color 0.3s, padding-right 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: var(--primary);
+            padding-right: 10px;
+        }
+
+        .social-icons a {
+            font-size: 2rem;
+            margin: 0 20px;
+            color: var(--accent);
+            transition: color 0.3s, transform 0.3s;
+        }
+
+        .social-icons a:hover {
+            color: var(--primary);
+            transform: translateY(-8px);
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 3.5rem;
+            }
+            .hero p {
+                font-size: 1.5rem;
+            }
+            section {
+                padding: 80px 0;
+            }
+            .section-title {
+                font-size: 2.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg fixed-top">
+        <div class="container">
+            <!-- Logo Placeholder - يمكنك استبداله بصورة لوجو حقيقية -->
+            <a class="navbar-brand" href="#">
+                <img src="g.jpg" alt="جيماوى لوغو احترافي">
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="#home">الرئيسية</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#features">المميزات</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#about">عننا</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#classes">الدروس</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#trainers">المدربين</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#pricing">الأسعار</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#gallery">المعرض</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#contact">تواصل</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <section id="home" class="hero">
+        <div class="container text-center" data-aos="fade-up">
+            <h1>جيماوى</h1>
+            <p>غير حياتك.. ابدأ رحلتك الرياضية معنا اليوم</p>
+            <a href="#pricing" class="btn btn-primary">انضم الآن</a>
+        </div>
+    </section>
+
+    <!-- Features -->
+    <section id="features" class="bg-light">
+        <div class="container">
+            <h2 class="section-title text-center" data-aos="fade-up">مميزات جيماوى الفريدة</h2>
+            <div class="row text-center">
+                <div class="col-md-3" data-aos="fade-up" data-aos-delay="100">
+                    <i class="fas fa-dumbbell feature-icon"></i>
+                    <h4>أحدث المعدات</h4>
+                    <p>معدات عالمية من أفضل الماركات مثل Technogym وLife Fitness</p>
+                </div>
+                <div class="col-md-3" data-aos="fade-up" data-aos-delay="200">
+                    <i class="fas fa-users feature-icon"></i>
+                    <h4>دروس جماعية متنوعة</h4>
+                    <p>أكثر من 50 درس أسبوعياً: زومبا، سبينينج، بوكسينج، HIIT</p>
+                </div>
+                <div class="col-md-3" data-aos="fade-up" data-aos-delay="300">
+                    <i class="fas fa-spa feature-icon"></i>
+                    <h4>مناطق استرخاء</h4>
+                    <p>ساونا، حمام بخار، جاكوزي، ومنطقة تدليك</p>
+                </div>
+                <div class="col-md-3" data-aos="fade-up" data-aos-delay="400">
+                    <i class="fas fa-clock feature-icon"></i>
+                    <h4>مفتوح 24/7</h4>
+                    <p>تمرن في أي وقت يناسب جدولك</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About -->
+    <section id="about">
+        <div class="container">
+            <h2 class="section-title text-center" data-aos="fade-up">عن جيماوى</h2>
+            <div class="row align-items-center">
+                <div class="col-lg-6" data-aos="fade-right">
+                    <img src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" class="img-fluid rounded shadow" alt="داخل جيماوى الاحترافي">
+                </div>
+                <div class="col-lg-6" data-aos="fade-left">
+                    <p class="lead">جيماوى هو جيم فاخر يجمع بين التكنولوجيا الحديثة والتصميم الأنيق ليقدم تجربة رياضية لا مثيل لها.</p>
+                    <p>مساحة واسعة تزيد عن 2000 متر مربع، مقسمة إلى مناطق متخصصة: كارديو، أثقال حرة، آلات، استوديو دروس جماعية، ومنطقة وظيفية.</p>
+                    <p>فريقنا من المدربين المعتمدين دولياً ملتزم بمساعدتك على تحقيق أهدافك، سواء فقدان وزن، بناء عضلي، أو تحسين اللياقة العامة.</p>
+                    <p>نقدم أيضاً برامج تغذية، قياسات بدنية دورية، وتطبيق خاص للحجز والمتابعة.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Classes -->
+    <section id="classes" class="bg-light">
+        <div class="container">
+            <h2 class="section-title text-center" data-aos="fade-up">دروسنا الجماعية</h2>
+            <div class="swiper mySwiper">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide">
+                        <div class="class-card">
+                            <img src="https://www.meridian-fitness.co.uk/wp-content/uploads/2024/09/Benefits-Of-Group-High-Intensity-Interval-Training-Classes.webp" alt="HIIT كارديو مكثف">
+                            <div class="p-4">
+                                <h4>HIIT & كارديو مكثف</h4>
+                                <p>حرق سعرات حرارية عالي، تحسين التحمل واللياقة القلبية في 45 دقيقة</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="class-card">
+                            <img src="http://sfhealthtech.com/cdn/shop/articles/A_Comprehensive_Guide_to_Powerlifting.jpg?v=1715158133" alt="رفع أثقال وقوة">
+                            <div class="p-4">
+                                <h4>باور ليفتينج ورفع أثقال</h4>
+                                <p>برامج متخصصة لبناء القوة والعضلات مع تقنية صحيحة</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="class-card">
+                            <img src="https://www.m3yoga.com/wp-content/uploads/2025/04/Studios-Page-Atlanta.png" alt="يوغا وبيلاتس">
+                            <div class="p-4">
+                                <h4>يوغا وبيلاتس</h4>
+                                <p>تحسين المرونة، التوازن، والاسترخاء العقلي</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="class-card">
+                            <img src="https://hips.hearstapps.com/hmg-prod/images/athletes-doing-push-ups-with-dumbbells-on-floor-royalty-free-image-1638463573.jpg?crop=1xw:0.84375xh;center,top" alt="تمارين وظيفية">
+                            <div class="p-4">
+                                <h4>تمارين وظيفية وكروس فيت</h4>
+                                <p>تحسين الحركة اليومية والأداء الرياضي</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-pagination"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Trainers -->
+    <section id="trainers">
+        <div class="container">
+            <h2 class="section-title text-center" data-aos="fade-up">مدربينا المحترفين</h2>
+            <div class="row">
+                <div class="col-md-4 mb-5" data-aos="zoom-in">
+                    <div class="trainer-card">
+                        <img src="https://c8.alamy.com/comp/T57N78/bearded-man-professional-personal-trainer-standing-at-gym-crossed-arms-looking-camera-cool-T57N78.jpg" alt="أحمد محمد">
+                        <h4>أحمد محمد</h4>
+                        <p>مدرب معتمد NASM - متخصص HIIT وكارديو - خبرة 10 سنوات</p>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-5" data-aos="zoom-in" data-aos-delay="200">
+                    <div class="trainer-card">
+                        <img src="https://www.strongfitnessmag.com/wp-content/uploads/2024/04/Nikki-Lewis-flex.jpg" alt="سارة علي">
+                        <h4>سارة علي</h4>
+                        <p>مدربة يوغا وبيلاتس معتمدة - خبيرة في التمارين التصحيحية</p>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-5" data-aos="zoom-in" data-aos-delay="400">
+                    <div class="trainer-card">
+                        <img src="https://as2.ftcdn.net/jpg/05/45/06/25/1000_F_545062574_b6LZ6PKkZm7r4wVBFpcQPA1j33VauEZB.jpg" alt="خالد حسن">
+                        <h4>خالد حسن</h4>
+                        <p>مدرب رفع أثقال وبودي بيلدينج - بطل وطني سابق</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing -->
+    <section id="pricing" class="bg-light">
+        <div class="container">
+            <h2 class="section-title text-center" data-aos="fade-up">الباقات والأسعار</h2>
+            <div class="row">
+                <div class="col-md-4" data-aos="fade-up">
+                    <div class="pricing-card text-center">
+                        <h4>باقة أساسية</h4>
+                        <div class="price">350 جنيه<span>/شهر</span></div>
+                        <ul class="list-unstyled mt-4">
+                            <li>دخول الجيم 24/7</li>
+                            <li>استخدام جميع المعدات</li>
+                            <li>خزائن ودشات</li>
+                            <li>واي فاي مجاني</li>
+                        </ul>
+                        <a href="#" class="btn btn-primary mt-4">اشترك الآن</a>
+                    </div>
+                </div>
+                <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
+                    <div class="pricing-card text-center">
+                        <h4>باقة بريميوم <span class="badge bg-primary">الأكثر شعبية</span></h4>
+                        <div class="price">700 جنيه<span>/شهر</span></div>
+                        <ul class="list-unstyled mt-4">
+                            <li>كل مزايا الأساسية</li>
+                            <li>دروس جماعية غير محدودة</li>
+                            <li>10 جلسات مدرب شخصي</li>
+                            <li>دخول مناطق الاسترخاء</li>
+                            <li>منشفة ومشروبات مجانية</li>
+                        </ul>
+                        <a href="#" class="btn btn-primary mt-4">اشترك الآن</a>
+                    </div>
+                </div>
+                <div class="col-md-4" data-aos="fade-up" data-aos-delay="400">
+                    <div class="pricing-card text-center">
+                        <h4>باقة VIP</h4>
+                        <div class="price">1200 جنيه<span>/شهر</span></div>
+                        <ul class="list-unstyled mt-4">
+                            <li>كل مزايا البريميوم</li>
+                            <li>مدرب شخصي غير محدود</li>
+                            <li>برنامج تغذية مخصص</li>
+                            <li>أولوية في الحجوزات</li>
+                            <li>دعوات لفعاليات خاصة</li>
+                        </ul>
+                        <a href="#" class="btn btn-primary mt-4">اشترك الآن</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery -->
+   <section id="gallery">
+        <div class="container">
+            <h2 class="section-title text-center" data-aos="fade-up">معرض جيماوى</h2>
+            <div class="row g-4">
+                <div class="col-md-4" data-aos="zoom-in">
+                    <img src="https://www.pentfitness.com/cdn/shop/articles/pent_luxury_home_gym_equipment.jpg?v=1705238127&width=720" class="gallery-img img-fluid shadow" alt="معدات فاخرة">
+                </div>
+                <div class="col-md-4" data-aos="zoom-in" data-aos-delay="200">
+                    <img src="https://www.shutterstock.com/image-photo/highend-treadmills-aligned-by-window-600nw-2656298805.jpg" class="gallery-img img-fluid shadow" alt="منطقة الكارديو">
+                </div>
+                <div class="col-md-4" data-aos="zoom-in" data-aos-delay="400">
+                    <img src="https://irp.cdn-website.com/91678c75/dms3rep/multi/43+-75307e1f.jpg" class="gallery-img img-fluid shadow" alt="منطقة الأثقال">
+                </div>
+                <div class="col-md-4" data-aos="zoom-in">
+                    <img src="https://thumbs.dreamstime.com/b/modern-gym-interior-cardio-strength-training-equipment-black-orange-color-palette-linear-lighting-large-windows-reveal-385712045.jpg" class="gallery-img img-fluid shadow" alt="التصميم الداخلي">
+                </div>
+                <div class="col-md-4" data-aos="zoom-in" data-aos-delay="200">
+                    <!-- صورة جديدة لتمارين جماعية عالية الطاقة -->
+                    <img src="https://images.stockcake.com/public/e/6/b/e6b2e02e-9f14-4381-aee7-2bc6b0e662a3_large/fitness-class-energy-stockcake.jpg" class="gallery-img img-fluid shadow" alt="تمارين جماعية مكثفة وممتعة">
+                </div>
+                <div class="col-md-4" data-aos="zoom-in" data-aos-delay="400">
+                    <img src="https://images.stockcake.com/public/e/0/c/e0c07731-2523-4939-b4bc-71db137b7708_large/luxury-home-gym-stockcake.jpg" class="gallery-img img-fluid shadow" alt="مناطق الاسترخاء">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+   <footer>
+        <div class="container position-relative">
+            <div class="row">
+                <div class="col-lg-4 mb-5">
+                    <h5>جيماوى</h5>
+                    <p class="text-muted">الجيم الاحترافي الأول في المنطقة<br>ملتزمون بصحتك ولياقتك البدنية بأعلى المعايير العالمية.</p>
+                    <p class="text-muted small">اكتشف قوتك الحقيقية مع فريق محترف ومعدات فاخرة.</p>
+                </div>
+                <div class="col-lg-4 mb-5">
+                    <h5>روابط سريعة</h5>
+                    <div class="footer-links">
+                        <a href="#home">الرئيسية</a>
+                        <a href="#features">المميزات</a>
+                        <a href="#classes">الدروس الجماعية</a>
+                        <a href="#trainers">المدربين</a>
+                        <a href="#pricing">الباقات والأسعار</a>
+                        <a href="#gallery">معرض الصور</a>
+                        <a href="#contact">تواصل معنا</a>
+                    </div>
+                </div>
+                <div class="col-lg-4 mb-5">
+                    <h5>معلومات التواصل</h5>
+                    <p class="text-muted"><i class="fas fa-map-marker-alt me-2"></i> القاهرة الجديدة - التجمع الخامس</p>
+                    <p class="text-muted"><i class="fas fa-phone me-2"></i> 01000000000 - 01111111111</p>
+                    <p class="text-muted"><i class="fas fa-envelope me-2"></i> info@gymawi.com</p>
+                    <p class="text-muted"><i class="fas fa-clock me-2"></i> مفتوح 24 ساعة / 7 أيام في الأسبوع</p>
+                </div>
+            </div>
+            <div class="footer-bottom text-center">
+                <div class="social-icons mb-4">
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-whatsapp"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                    <a href="#"><i class="fab fa-tiktok"></i></a>
+                </div>
+                <p class="text-muted small">&copy; 2025 جيماوى - جميع الحقوق محفوظة | تصميم وتطوير باحترافية عالمية</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script>
+        AOS.init({ duration: 1200 });
+
+        // Navbar Scroll
+        window.addEventListener('scroll', () => {
+            document.querySelector('.navbar').classList.toggle('scrolled', window.scrollY > 50);
+        });
+
+        // Swiper
+        var swiper = new Swiper(".mySwiper", {
+            slidesPerView: 1,
+            spaceBetween: 30,
+            loop: true,
+            pagination: { el: ".swiper-pagination", clickable: true },
+            navigation: { nextEl: ".swiper-button-next", prevEl: ".swiper-button-prev" },
+            breakpoints: {
+                768: { slidesPerView: 2 },
+                992: { slidesPerView: 3 }
+            }
+        });
+
+        // Smooth Scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({ behavior: 'smooth' });
+            });
+        });
+    </script>
+</body>
+</html>
